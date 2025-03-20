@@ -125,19 +125,13 @@ Tag values must be between 0 and 1, where:
 > **Important:** We recommend using a unique prefix (like `internal-`) for your tags to avoid conflicts with Salad's
 > existing DHC labels.
 
-#### Parameters
-
-| Parameter      | Description                                                                           |
-| -------------- | ------------------------------------------------------------------------------------- |
-| `service_name` | Key-value pairs where key is the service name and value is between 0 and 1, inclusive |
-
 #### Example request
 
 ```json
 {
-  "nflx": 1,
-  "dsnp": 0,
-  "itv": 0.8
+  "internal-nflx": 1,
+  "internal-dsnp": 0,
+  "internal-itv": 0.8
 }
 ```
 
@@ -175,6 +169,6 @@ Removes all capability tags from a node.
      -H "Content-Type: application/json" \
      -d '{"internal-target-service": 1}'
    ```
-4. Route traffic to successful nodes by suffixing `&tag=internal-streaming` to your session ID (e.g.,
-   "`https://sessionID1234?cap=internal-target-service:{PASSWORD}@{sgs_name}.salad.com`"), or by adding it as a header
+4. Route traffic to successful nodes by suffixing `&tag=internal-target-service` to your session ID (e.g.,
+   "`https://sessionID1234&tag=internal-target-service:{PASSWORD}@{sgs_name}.salad.com`"), or by adding it as a header
    in your request as follows: "`X-Sgs-Tag`:`internal-target-service`".
